@@ -13,6 +13,10 @@ export default class App extends Component {
   render() {
     return (
       <Layout>
+        {window.location.pathname === "/" && <Home/>}
+        {window.location.pathname === "/pizzas" && <Pizzas />}
+        {window.location.pathname === "/about" && <About />}
+        {window.location.pathname === "/cart" && <Cart />}
         <Home />
       </Layout>
     );
