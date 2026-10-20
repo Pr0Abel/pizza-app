@@ -1,11 +1,22 @@
 
 import { pizzas } from "../data/pizzas.js";
 import PizzaCard from "../components/PizzaCard.jsx";
+import { useState } from "react";
 
 const filters = ["all", "vegetarian", "spicy"];
 
 export default function Pizzas() {
-  
+  const [filter, setFilter] = useState("all")
+  const [chipState, setChipState] = useState(false)
+
+  const handleFilterClick = (f) => {
+    //console.log(f)
+    setFilter(f)
+    setChipState(!chipState)
+
+
+  }
+
   return (
     <>
       <h1>Pick your pizza</h1>
@@ -13,8 +24,8 @@ export default function Pizzas() {
         {filters.map((f) => (
           <button
             key={f}
-            className={`chip ${false ? "active" : ""}`}
-            onClick={() => {} }
+            className={`chip ${filter == f ? "active" : ""}`}
+            onClick={() => {handleFilterClick(f)} }
           >
             {f}
           </button>
